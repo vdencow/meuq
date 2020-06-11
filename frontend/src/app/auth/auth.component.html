@@ -1,0 +1,30 @@
+
+
+<div class="wrapper">
+    <div class="login-wrapper">
+        <form class="flex-row d-flex col-12 justify-content-center " [formGroup]="loginForm">
+            <mat-card class="col-lg-4 col-md-5 col-sm-6 col-xs-8 login-card" >
+                <mat-card-title class="text-center">Login</mat-card-title>
+                <span mat-card-subtitle>{{(_auth.loginState | async).hasError ? 'Verifique os dados inseridos' : 'Acesse o painel admin'}}</span>
+                <mat-card-content class="d-flex flex-column from-group" >
+                    
+                    <mat-form-field>
+                        <input matInput placeholder="Usuario" type="text" formControlName="username">
+                        <mat-error>Usuario inválido</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput placeholder="Senha" type="password" formControlName="password">
+                        <mat-error>Senha inválida</mat-error>
+
+                    </mat-form-field>
+
+                    <button mat-raised-button (click)="login()" [disabled]="!loginForm.valid">
+                        Acessar
+                    </button>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+
+</div>

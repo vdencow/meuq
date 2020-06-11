@@ -1,0 +1,8 @@
+<mat-toolbar>
+  <span>MeuQ</span>
+  <span style="flex: 1"></span>
+  <button mat-button *ngIf="(_auth.loginState | async).logged" (click)="_auth.logout()">Sair</button>
+</mat-toolbar>
+
+
+<router-outlet></router-outlet>

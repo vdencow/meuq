@@ -1,0 +1,43 @@
+
+
+
+<div class="d-flex flex-column justify-content-center align-items-center wrapper">
+
+   
+    <mat-card class="col-lg-8 col-md-9 col-sm-9 col-xs-10">
+        <span mat-card-title class="col-12 d-flex flex-row justify-content-between">
+            Cadastro de usuario
+            <button mat-icon-button (click)="create()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </span>
+
+            <div *ngIf="(_crud.usersState | async).loading; else ready" class="d-flex flex-column align-items-center justify-content-center full-height">
+                <mat-spinner diameter="40"></mat-spinner>
+            </div>
+            <ng-template #ready>
+                <mat-list role="list" color="accent">
+
+                    <mat-list-item role="listitem" *ngFor="let user of (_crud.usersState | async).data">
+                        <span matLine>{{user.username}}</span>
+                        <span matLine>{{user.email}}</span>
+                        <span class="d-flex flex-row">
+                            <button mat-icon-button (click)="edit(user)">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button mat-icon-button (click)="aas(user)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </span>
+                        <mat-divider></mat-divider>
+    
+                    </mat-list-item>
+    
+    
+            </mat-list>
+            </ng-template>
+                
+
+    </mat-card>
+</div>
+
